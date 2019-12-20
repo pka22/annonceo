@@ -1,0 +1,74 @@
+
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Annonce
+{% endblock %}
+
+{% block body %}
+    <br>
+    <h3>Backoffice/Gestion des Annonces</h3>
+    <br>
+
+
+       {% if annonces %}
+           <table class="table table-striped" border="1px" >
+               <thead >
+               <tr bgcolor="#6495ed">
+            <th>Titre</th>
+            <th>Description_courte</th>
+            <th>Description_longue</th>
+            <th>Prix</th>
+            <th>Photo</th>
+            <th>Pays</th>
+            <th>Ville</th>
+            <th>Adresse</th>
+            <th>CP</th>
+            <th>Membre_id</th>
+            <th>Photo_id</th>
+            <th>Category_id</th>
+            <th>Date_enregistrement</th>
+                   <th>Actions</th>
+             </tr>
+             </thead>
+            <tbody>
+                     {% for annonce in annonces %}
+                     <tr>
+                         <td>{{ annonce.titre }} </td>
+                         <td>{{ annonce.descriptioncourte}} </td>
+                         <td>{{ annonce.descriptionlongue }} </td>
+                         <td>{{ annonce.prix }} </td>
+                         <td>{{ annonce.photo }} </td>
+                         <td>{{ annonce.pays }} </td>
+                         <td>{{ annonce.ville }} </td>
+                         <td>{{ annonce.adresse }} </td>
+                         <td>{{ annonce.Cp }} </td>
+                         <td>{{ annonce.membreid}} </td>
+                         <td>{{ annonce.photoid }} </td>
+                         <td>{{ annonce.categoryid }} </td>
+                         <td>{{ annonce.dateenregistrement|date('d/m/Y H:s') }} </td>
+                      <td>
+                          <a href="#">
+                              <img src="https://icon-icons.com/icons2/620/PNG/32/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.png" alt="image">
+                          </a>
+
+
+                          {#<a href="/categorie/" class="btn btn-dark">EDIT</a>#}
+
+                          <a href="#" >
+                              <img src="https://icon-icons.com/icons2/868/PNG/32/trash_bin_icon-icons.com_67981.png" alt="image">
+                          </a>
+                      </td>
+                     </tr>
+                {% endfor %}
+            </tbody>
+         </table>
+        {% else %}
+         <p>No Annonces</p>
+    {% endif %}
+
+
+{% endblock %}
+
+
+

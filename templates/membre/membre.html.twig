@@ -1,0 +1,65 @@
+
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Membre
+{% endblock %}
+
+{% block body %}
+    <h3>Backoffice/Gestion des Membres</h3>
+    {% if membress %}
+        <table class="table table-striped" border="1px" >
+            <thead >
+            <tr bgcolor="#6495ed">
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Civilite</th>
+                <th>Statut</th>
+                <th>Date_enregistrement</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for mem in membress %}
+                <tr>
+                    <td>{{ mem.id}} </td>
+                    <td>{{ mem.pseudo }} </td>
+                    <td>{{ mem.nom }} </td>
+                    <td>{{ mem.prenom }} </td>
+                    <td>{{ mem.telephone }} </td>
+                    <td>{{ mem.email }} </td>
+                    <td>{{ mem.civilite }} </td>
+                    <td>{{ mem.statut }} </td>
+                <td>{{ mem.dateenregistrement|date('d/m/Y H:s')}}</td>
+                    <td>
+
+                        <a href="{{ path('membre_edit', {'id': mem.id}) }}">
+                            <img src="https://icon-icons.com/icons2/620/PNG/32/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.png" alt="image">
+                        </a>
+                        {#<a href="/categorie/" class="btn btn-dark">EDIT</a>#}
+                        <a href="{{ path('membre_supprimer', {'id': mem.id}) }}" >
+                            <img src="https://icon-icons.com/icons2/868/PNG/32/trash_bin_icon-icons.com_67981.png" alt="image">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Membres</p>
+    {% endif %}
+    <br>
+    <br>
+    <h3>Enter New Member</h3>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+
+
+

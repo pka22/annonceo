@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-secondary">
+    <div class="container">
+       <p class="navbar-brand">ANNONCEO</p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navclick" >
+        <span class="navbar-toggle-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navclick">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" >
+            <a href="{{ path('home') }}" class="nav-link">Acceuil</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Qui sommes nous</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    {#<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+                </form>
+
+
+            <li class="nav-item">
+                <a href={{ path('app_login') }} class="nav-link">EspaceMembre</a>
+            </li>
+            <li class="nav-item">
+                <a href={{path('newannonce')}} class="nav-link">Déposer Une Annonce</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>

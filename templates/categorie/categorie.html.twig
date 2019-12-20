@@ -1,0 +1,57 @@
+
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Categorie
+{% endblock %}
+
+{% block body %}
+    <h3>Backoffice/Gestion des Categories</h3>
+    {% if categories %}
+        <table id="category" class="table table-striped" border="1px" >
+            <thead >
+            <tr bgcolor="#6495ed">
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Motscles</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for categ in categories %}
+                <tr>
+                    <td>{{ categ.id}} </td>
+                    <td>{{ categ.titre }} </td>
+                    <td>{{ categ.motscles }} </td>
+                    <td>
+
+                            <a href="{{ path('categorie_edit', {'id': categ.id}) }}" >
+                               <img src="https://icon-icons.com/icons2/620/PNG/32/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.png"  alt="image">
+                                </a>
+
+
+                        {#<a href="/categorie/" class="btn btn-dark">EDIT</a>#}
+
+                        <a href="{{ path('categorie_supprimer', {'id': categ.id}) }}">
+                        <img src="https://icon-icons.com/icons2/868/PNG/32/trash_bin_icon-icons.com_67981.png" alt="image" class="nnn" data-id="{{ categ.id }}" property="submit">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Categorie</p>
+    {% endif %}
+    <br>
+    <br>
+    <h3>Enter New Category</h3>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{#{% block javascripts %}
+<script src="/js/main.js" ></script>
+{% endblock %}#}
+

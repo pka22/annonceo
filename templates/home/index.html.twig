@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body%}
+
+<div>
+    <section>
+    <form style="padding:50px">
+    {{ form(form) }}
+    </form>
+    </section>
+</div>
+
+<section>
+    <div class="section" align="center">
+        <h2 class="title">Annonces: {{ annonces|length }}</h2>
+
+        <div class="columns is-multiline" >
+            {% for annon in annonces %}
+                  <div class="column is-one-quarter" >
+                    <div class="box" >
+                        <article class="media">
+                            <div class="media-left" >
+                                <figure class="image is-128x128">
+                                    <img src="https://tse1.mm.bing.net/th?id=OIP.FUg0JLvvW7ymFAcuGGPqXAHaFj&pid=Api&P=0&w=210&h=159?lock={{ annon.id }}" alt="Image">
+                                </figure>
+                            </div>
+
+                            <div class="media-content" >
+                                <div class="content" >
+                                    <p>
+                                        <a href="{{ path('annonce', {id: annon.id}) }}" class="has-text-primary">
+                                            <strong>{{ annon.titre }}</strong>
+                                        </a>
+                                        <br>
+                                        {{ annon.descriptionlongue }}
+                                        <br>
+                                        <small style="color: #AA3333"> prix:{{ annon.prix }} €</small>
+                                        <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{#<div class="columns" >
+        {% for annon in annonces %}
+        {{annon.titre }}
+         {{ annon.descriptioncourte }}
+         {{ annon.prix }}
+        {% endfor %}
+    </div>
+
+{% endblock %}#}
